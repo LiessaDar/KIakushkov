@@ -20,4 +20,17 @@ public class OrderService {
     public List<ClientOrder> getOrdersByClient(Client client){
         return clientOrderRepository.getOrderByClient(client);
     }
+public ClientOrder createOrder(Client client){
+       ClientOrder cOrder = new ClientOrder();
+       cOrder.setClient(client);
+       cOrder.setStatus(1);
+       clientOrderRepository.save(cOrder);
+       return cOrder;
+}
+public ClientOrder findNotClosedOrderByClient(Client client){
+    ClientOrder exampleClientOrder = new ClientOrder();
+    exampleClientOrder.setClient(client);
+    exampleClientOrder.setStatus(1);
+    return clientOrderRepository.findOne(Example.of(exampleClientOrder)).orElse(null);
+}
 }
