@@ -33,4 +33,9 @@ public ClientOrder findNotClosedOrderByClient(Client client){
     exampleClientOrder.setStatus(1);
     return clientOrderRepository.findOne(Example.of(exampleClientOrder)).orElse(null);
 }
+public ClientOrder updateOrderTotal(ClientOrder clientOrder,Double total){
+        clientOrder.setTotal(total);
+        clientOrderRepository.saveAndFlush(clientOrder);
+        return  clientOrder;
+}
 }

@@ -11,6 +11,10 @@ public interface OrderProductRepository extends JpaRepository<OrderProduct, Long
 String GET_TOP_POPULAR_PRODUCT = "SELECT o.product from OrderProduct as o group by o.product.id order by "+ "sum(o.countProduct)desc";
     @Query("SELECT DISTINCT p.product FROM OrderProduct p WHERE p.clientOrder IN :orderList")
     public List<Product> getProductsByOrderList(@Param("orderList")List<ClientOrder> orderList);
+    @Query("SELECT DISTINCT p FROM OrderProduct p WHERE p.clientOrder = :clientOrder")
+    public List<OrderProduct> getPListByOrder(@Param("clientOrder")ClientOrder clientOrder);
+    @Query("delete FROM OrderProduct p WHERE p.clientOrder = :clientOrder")
+    public void clearOrder(@Param("clientOrder")ClientOrder clientOrder);
     @Query(GET_TOP_POPULAR_PRODUCT)
     public List<Product> getMostPopularProducts();
 }
