@@ -21,6 +21,11 @@ public class ClientService {
         exampleClient.setId(clientId);
         return clientRepository.findOne(Example.of(exampleClient)).orElse(null);
     }
+    public Client getClientByExstId(Long externalId){
+        Client exampleClient = new Client();
+        exampleClient.setExternalId(externalId);
+        return clientRepository.findOne(Example.of(exampleClient)).orElse(null);
+    }
     public Client createNewClient(Long externalId,String name,String adress,String phoneNumber){
         Client client = new Client();
         client.setAddress(adress);
