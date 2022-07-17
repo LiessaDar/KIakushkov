@@ -36,4 +36,12 @@ public class OrderProductService {
         orderProductRepository.clearOrder(clientOrder);
         return "Order Successfully cleared";
     }
+
+    public OrderProduct addOPtoBase(ClientOrder clientOrder,Product product,Long countProduct){
+        OrderProduct orderProduct = new OrderProduct();
+        orderProduct.setProduct(product);
+        orderProduct.setClientOrder(clientOrder);
+        orderProduct.setCountProduct(countProduct);
+        return orderProductRepository.save(orderProduct);
+    }
 }

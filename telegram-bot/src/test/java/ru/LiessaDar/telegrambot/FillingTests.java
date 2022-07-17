@@ -30,7 +30,7 @@ public class FillingTests {
 
             Client client2 = new Client();
             client2.setAddress("address2");
-            client2.setExternalId(Long.valueOf(1));
+            client2.setExternalId(Long.valueOf(2));
             client2.setFullName("fullName2");
             client2.setPhoneNumber("8(978)100-10-11");
             clientRepository.save(client2);

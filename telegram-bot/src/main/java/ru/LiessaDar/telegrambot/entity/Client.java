@@ -11,7 +11,7 @@ public class Client {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "externalId", nullable = false)
+    @Column(name = "externalId", nullable = false,unique = true)
     private Long externalId;
 
     @Column(name = "fullName", nullable = false, length = 255)
